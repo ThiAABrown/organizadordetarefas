@@ -1,0 +1,51 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="pt-br">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Planejador de Tarefas</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:title" content="">
+        <meta property="og:type" content="">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">    
+    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+    </head>
+
+    <body>
+
+    <!-- Add your site or application content here -->
+    <h1>Planejador de Tarefas</h1>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Criar</a>
+        <a href="#">Execução</a>
+        <a href="#">Estatisticas</a>
+        <a href="#">Sair</a>
+        <div class="animation start-home"></div>
+    </nav>
+
+    {% block conteudo %} {% endblock conteudo %}
+
+    <!-- <script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script> -->
+    <!-- <script src="js/app.js"></script> -->
+
+    </body>
+
+</html>

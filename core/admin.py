@@ -9,4 +9,8 @@ class PlanejamentoAdmin(admin.ModelAdmin):
 
 @admin.register(Execucao)
 class ExecucaoAdmin(admin.ModelAdmin):
-    list_display = ('inicio', 'termino')
+    list_display = ('inicio', 'termino', 'planejamento', 'get_descricao')
+
+    @admin.display(description='Descrição', ordering='planejamento__descricao')
+    def get_descricao(self, obj):
+        return obj.planejamento.descricao
