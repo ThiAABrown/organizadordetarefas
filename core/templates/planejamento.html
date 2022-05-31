@@ -1,6 +1,36 @@
 {% extends "base.html" %}
 
-{% block conteudo%}
+{% block conteudo %}
+<div class="corpo">
+    <div class="card-body">
+        <h4 class="texto-primary">
+            Crie um novo planejamenrto
+        </h4>
+            <form action="{% url 'planejamento' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+
+
+            <!-- {% for field in planejamento %}
+            <div class="form-group col-md-12">
+                <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
+
+            </div>
+            {% endfor %} -->
+
+            {{ form }}
+
+            <div class="text-right">
+                <a href="{% url 'index' %}" class="btn btn-secondary text-white" type="button">
+                    <span class="text">Cancelar</span>
+                </a>
+
+                <button class="btn btn-primary" type="submit">
+                    <span class="text">Criar Projeto</span>
+                </button>
+            </div>
+        </form>   
+    </div>
+</div>
 
 
 {% endblock conteudo %}

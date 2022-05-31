@@ -1,4 +1,5 @@
 from django import forms
+from dataclasses import fields
 
 from .models import Planejamento, Execucao
 

@@ -21,10 +21,9 @@ def planejamento(request):
             form = PlanejamentoForm()
         else:
             messages.error(request, 'Erro ao criar o planejamento.')
-    context = {
-        'planejamento': form
-    }
-    return render(request, 'planejamento.html', context)
+    return render(request, 'planejamento.html', {
+        'form': form
+    })
 
 def execucao(request):
     form = ExecucaoForm(request.POST)
@@ -40,3 +39,7 @@ def execucao(request):
         'execucao': form
     }
     return render(request, 'execucao.html', context)
+
+def estatisticas(request):
+
+    return render(request, 'estatisticas.html')
