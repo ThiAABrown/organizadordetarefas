@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
-<div class="corpo">
-    <div class="card-body">
-        <h4 class="texto-primary">
-            Crie um novo planejamenrto
-        </h4>
-            <form action="{% url 'planejamento' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+<div class="card-body">
+    <h4 class="texto-primary">
+        Crie um novo planejamenrto
+    </h4>
+
+    <div class="container2">
+
+        <form action="{% url 'planejamento' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
 
-
-            <!-- {% for field in planejamento %}
+            {% for field in form %}
             <div class="form-group col-md-12">
                 <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
-
+                <input name="{{ field.name }}" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
             </div>
-            {% endfor %} -->
-
-            {{ form }}
+            {% endfor %}
 
             <div class="text-right">
-                <a href="{% url 'index' %}" class="btn btn-secondary text-white" type="button">
+                <a href="{% url 'index' %}" type="button">
                     <span class="text">Cancelar</span>
                 </a>
 
@@ -28,8 +27,9 @@
                     <span class="text">Criar Projeto</span>
                 </button>
             </div>
-        </form>   
+        </form>
     </div>
+
 </div>
 
 

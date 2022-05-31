@@ -2,50 +2,80 @@
 
 {% load static %}
 
-<html class="no-js" lang="pt-br">
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Thiago Brown">
+    <title>Planejador de Tarefas</title>  
 
-    <head>
-        <meta charset="utf-8">
-        <title>Planejador de Tarefas</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap5/css/bootstrap.min.css' %}" rel="stylesheet">    
 
-        <meta property="og:title" content="">
-        <meta property="og:type" content="">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="icon.png">
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
 
     
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">    
-    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <!-- Custom styles for this template -->
+    <link href="{% static 'bootstrap5/css/sidebars.css' %}" rel="stylesheet">    
 
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#fafafa">
-    </head>
+  </head>
+  <body>
+    
 
-    <body>
+    <main>
 
-    <!-- Add your site or application content here -->
-    <h1>Planejador de Tarefas</h1>
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <span class="fs-4">Planejador de Tarefas</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              Planejamento
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              Execução
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              Estatísticas
+            </a>
+          </li>
+        </ul>
+      </div>
 
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Criar</a>
-        <a href="#">Execução</a>
-        <a href="#">Estatisticas</a>
-        <a href="#">Sair</a>
-        <div class="animation start-home"></div>
-    </nav>
+      <div class="b-example-divider"></div>
 
-    {% block conteudo %} {% endblock conteudo %}
+      {% block conteudo %} {% endblock conteudo %}
 
-    <!-- <script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script> -->
-    <!-- <script src="js/app.js"></script> -->
+    </main>
 
-    </body>
+    <script src="{% static 'bootstrap5/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'bootstrap5/js/sidebars.js' %}"></script>
 
+  </body>
 </html>
