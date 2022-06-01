@@ -12,5 +12,4 @@ class Planejamento(models.Model):
 class Execucao(models.Model):
     inicio = models.DateTimeField('Inicio', )
     termino = models.DateTimeField('Termino', )
-
     planejamento = models.OneToOneField('Planejamento', on_delete=models.CASCADE,)

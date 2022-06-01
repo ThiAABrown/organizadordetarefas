@@ -8,10 +8,26 @@
 
     <div class="container2">
 
+        <div class="alert alert-warning" role="alert">
+            {{ form.errors }}
+        </div>
+
+        {% if form.errors %}
+            {% for field in form %}
+                {% if field.errors %}
+                    {% for erro in field.errors %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ erro }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}                
+        {% endif %}
+
         <form action="{% url 'planejamento' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
 
-            {% for field in form %}
+            {% for field in form_planejamento %}
             <div class="form-group col-md-12">
                 <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
                 <input name="{{ field.name }}" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
@@ -28,6 +44,13 @@
                 </button>
             </div>
         </form>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 
 </div>

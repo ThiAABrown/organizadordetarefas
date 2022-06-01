@@ -11,4 +11,4 @@ class PlanejamentoForm(forms.ModelForm):
 class ExecucaoForm(forms.ModelForm):
     class Meta:
         model = Execucao
-        fields = ('inicio', 'termino')
+        fields = ('inicio', 'termino', 'planejamento')
