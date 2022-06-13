@@ -12,8 +12,9 @@ def index(request):
     return render(request, 'index.html', context)
     
 def planejamento(request):
-    form = PlanejamentoForm(request.POST)
+    form = PlanejamentoForm()
     if str(request.method) == 'POST':
+        form = PlanejamentoForm(request.POST)
         if form.is_valid():
             form.save()
 
@@ -27,8 +28,9 @@ def planejamento(request):
     return render(request, 'planejamento.html', context)
 
 def execucao(request):
-    form = ExecucaoForm(request.POST)
+    form = ExecucaoForm()
     if str(request.method) == 'POST':
+        form = ExecucaoForm(request.POST)
         if form.is_valid():
             form.save()
 
