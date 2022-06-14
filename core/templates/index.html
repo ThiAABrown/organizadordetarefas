@@ -1,34 +1,28 @@
 {% extends "base.html" %}
 
-{% block conteudo%}
+{% block conteudo %}
 
-<div class="conteniner">
+<div class="container">
     <h1>Tarefas</h1>
-
     <table class="table table-dark">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Descrição</th>
                 <th scope="col">Inicio</th>
-                <th scope="col">Termino</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for planejamentos in planejamento %}}
+            {% for planejamentos in planejamento %}
                 <tr>
                     <td scope="row">{{ planejamentos.id }}</td>
                     <td scope="row"><a href="#modal{{ planejamentos.descricao }}" data-toggle="modal"> {{ planejamentos.nome_planejamento }} </a></td>
-                    <td scope="row">{{ planejamentos.descricao }}</td>
                     <td scope="row">{{ planejamentos.inicio }}</td>
-                    <td scope="row">{{ planejamentos.termino }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-
 </div>
 
 
