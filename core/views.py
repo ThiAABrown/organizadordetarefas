@@ -46,3 +46,10 @@ def execucao(request):
 def estatisticas(request):
 
     return render(request, 'estatisticas.html')
+
+def detalhes(request, id):
+
+    context = {
+        'planejamento': Planejamento.objects.get(id=id)
+    }
+    return render(request, 'detalhes_plan.html', context)

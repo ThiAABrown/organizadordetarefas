@@ -2,6 +2,16 @@
 
 {% block conteudo %}
 
+<div class="container">
+    <h2>Detalhes</h2>
+    <div class="container">
+        <p>{{ planejamento.id }}</p>
+        <p>{{ planejamento.nome_planejamento }}</p>
+        <p>{{ planejamento.inicio }}</p>
+        <p>{{ planejamento.termino }}</p>
+        <p>{{ planejamento.descricao }}</p>
+    </div>
+</div>
 
 
 
@@ -14,4 +24,5 @@
         <span class="text">Executar Tarefa</span>
     </button>
 </div>
+
 {% endblock conteudo %}
