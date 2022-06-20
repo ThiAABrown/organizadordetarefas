@@ -11,4 +11,5 @@ class PlanejamentoForm(forms.ModelForm):
 class ExecucaoForm(forms.ModelForm):
     class Meta:
         model = Execucao
-        fields = ('inicio', 'termino', 'planejamento')
+        fields = ('inicio', 'termino', 'planejamento',)
+        widgets = {'planejamento': forms.HiddenInput()}

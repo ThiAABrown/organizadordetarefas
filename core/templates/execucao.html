@@ -2,4 +2,58 @@
 
 {% block conteudo%}
 
+<div class="card-body">
+    <h4 class="texto-primary">
+        Execute o planejamento
+    </h4>
+
+    <div class="container2">
+
+        <div class="alert alert-warning" role="alert">
+            {{ form.errors }}
+        </div>
+
+        {% if form.errors %}
+            {% for field in form %}
+                {% if field.errors %}
+                    {% for erro in field.errors %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ erro }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}                
+        {% endif %}
+
+        <form action="{% url 'execucao' id %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for field in form_execucao %}
+            <div class="form-group col-md-12">
+                <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
+                <input name="{{ field.name }}" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
+            </div>
+            {% endfor %}
+
+            <div class="text-right">
+                <a href="{% url 'index' %}" type="button">
+                    <span class="text">Cancelar</span>
+                </a>
+
+                <button class="btn btn-primary" type="submit">
+                    <span class="text">Executar</span>
+                </button>
+            </div>
+        </form>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+</div>
+
 {% endblock conteudo %}
