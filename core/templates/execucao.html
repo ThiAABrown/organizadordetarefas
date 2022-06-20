@@ -28,12 +28,19 @@
         <form action="{% url 'execucao' id %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
 
-            {% for field in form_execucao %}
             <div class="form-group col-md-12">
-                <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
-                <input name="{{ field.name }}" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
+                <label> Inicio * </label>
+                <input name="inicio" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
             </div>
-            {% endfor %}
+
+            <div class="form-group col-md-12">
+                <label> Término * </label>
+                <input name="termino" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
+            </div>
+
+            <div class="form-group col-md-12">
+                <input name="planejamento" type="hidden" value="{{ id }}">
+            </div>
 
             <div class="text-right">
                 <a href="{% url 'index' %}" type="button">
