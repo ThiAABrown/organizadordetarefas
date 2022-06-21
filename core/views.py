@@ -27,7 +27,7 @@ def planejamento(request):
     }
     return render(request, 'planejamento.html', context)
 
-def execucao(request, id):
+def execucao(request, planejamento_id):
     form = ExecucaoForm()
     if str(request.method) == 'POST':
         form = ExecucaoForm(request.POST)
@@ -39,7 +39,7 @@ def execucao(request, id):
         else:
             messages.error(request, 'Erro na execução.')
     context = {
-        'form_execucao': form, 'id': id 
+        'form_execucao': form, 'planejamento_id': planejamento_id 
     }
     return render(request, 'execucao.html', context)
 
@@ -47,10 +47,10 @@ def estatisticas(request):
 
     return render(request, 'estatisticas.html')
 
-def detalhes(request, id):
+def detalhes(request, planejamento_id):
 
     context = {
-        'planejamento': Planejamento.objects.get(id=id)
+        'planejamento': Planejamento.objects.get(id=planejamento_id)
     }
     return render(request, 'detalhes_plan.html', context)
 

@@ -25,7 +25,7 @@
             {% endfor %}                
         {% endif %}
 
-        <form action="{% url 'execucao' id %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+        <form action="{% url 'execucao' planejamento_id %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="form-group col-md-12">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group col-md-12">
-                <input name="planejamento" type="hidden" value="{{ id }}">
+                <input name="planejamento" type="hidden" value="{{ planejamento_id }}">
             </div>
 
             <div class="text-right">
