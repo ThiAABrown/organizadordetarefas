@@ -1,12 +1,12 @@
 from django.urls import path
 
-from .views import detalhes, index, planejamento, execucao, estatisticas, executado
+from .views import detalhes_planejamento, index, criar_planejamento, executar_planejamento, estatisticas_planejamento, planejamentos_executados
 
 urlpatterns = [
     path('', index, name='index'),
-    path('planejamento/', planejamento, name='planejamento'),
-    path('execucao/<int:planejamento_id>/', execucao, name='execucao'),
-    path('executado/', executado, name='executado'),
-    path('estatisticas/', estatisticas, name='estatisticas'),
-    path('detalhes/<int:planejamento_id>/', detalhes, name='detalhes')
+    path('planejamento/', criar_planejamento, name='planejamento'),
+    path('executar/<int:planejamento_id>/', executar_planejamento, name='executar'),
+    path('executado/', planejamentos_executados, name='executado'),
+    path('estatisticas/', estatisticas_planejamento, name='estatisticas'),
+    path('detalhes/<int:planejamento_id>/', detalhes_planejamento, name='detalhes')
 ]
