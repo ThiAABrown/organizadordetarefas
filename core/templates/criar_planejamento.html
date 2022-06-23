@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
-{% block conteudo%}
-
+{% block conteudo %}
 <div class="card-body">
     <h4 class="texto-primary">
-        Execute o planejamento
+        Crie um novo planejamenrto
     </h4>
 
     <div class="container2">
@@ -25,22 +24,15 @@
             {% endfor %}                
         {% endif %}
 
-        <form action="{% url 'executar' planejamento_id %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+        <form action="{% url 'criar_planejamento' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
 
+            {% for field in form_planejamento %}
             <div class="form-group col-md-12">
-                <label> Inicio * </label>
-                <input name="inicio" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
+                <label>{{ field.label }} {% if field.field.required %} * {% endif %}</label>
+                <input name="{{ field.name }}" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
             </div>
-
-            <div class="form-group col-md-12">
-                <label> Término * </label>
-                <input name="termino" class="form-control"  type="text" value="{{ field.value|default_if_none:'' }}">
-            </div>
-
-            <div class="form-group col-md-12">
-                <input name="planejamento" type="hidden" value="{{ planejamento_id }}">
-            </div>
+            {% endfor %}
 
             <div class="text-right">
                 <a href="{% url 'index' %}" type="button">
@@ -48,7 +40,7 @@
                 </a>
 
                 <button class="btn btn-primary" type="submit">
-                    <span class="text">Executar</span>
+                    <span class="text">Criar Projeto</span>
                 </button>
             </div>
         </form>
@@ -62,5 +54,6 @@
     </div>
 
 </div>
+
 
 {% endblock conteudo %}

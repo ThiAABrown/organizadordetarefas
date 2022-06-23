@@ -17,7 +17,7 @@
             {% for planejamentos in planejamento %}
                 <tr>
                     <td scope="row">{{ planejamentos.id }}</td>
-                    <td scope="row"><a href="{% url 'detalhes' planejamentos.id %}">{{ planejamentos.nome_planejamento }} </a></td>
+                    <td scope="row"><a href="{% url 'detalhes_planejamento' planejamentos.id %}">{{ planejamentos.nome_planejamento }} </a></td>
                     <td scope="row">{{ planejamentos.inicio }}</td>
                 </tr>
             {% endfor %}

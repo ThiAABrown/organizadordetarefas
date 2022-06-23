@@ -25,7 +25,7 @@ def criar_planejamento(request):
     context = {
         'form_planejamento': form
     }
-    return render(request, 'planejamento.html', context)
+    return render(request, 'criar_planejamento.html', context)
 
 def executar_planejamento(request, planejamento_id):
     form = ExecucaoForm()
@@ -34,26 +34,26 @@ def executar_planejamento(request, planejamento_id):
         if form.is_valid():
             form.save()
 
-            messages.success(request, 'Execução completa!')
+            messages.success(request, 'Você realizou um planejamento com sucesso!')
             form = ExecucaoForm()
         else:
-            messages.error(request, 'Erro na execução.')
+            messages.error(request, 'Erro ao executar o planejamento.')
     context = {
         'form_execucao': form, 'planejamento_id': planejamento_id 
     }
-    return render(request, 'execucao.html', context)
+    return render(request, 'executar_planejamento.html', context)
 
 def estatisticas_planejamento(request):
 
-    return render(request, 'estatisticas.html')
+    return render(request, 'estatisticas_planejamento.html')
 
 def detalhes_planejamento(request, planejamento_id):
 
     context = {
         'planejamento': Planejamento.objects.get(id=planejamento_id)
     }
-    return render(request, 'detalhes_plan.html', context)
+    return render(request, 'detalhes_planejamento.html', context)
 
 def planejamentos_executados(request):
     context = {}
-    return render(request, 'executado.html', context)
+    return render(request, 'planejamentos_executados.html', context)
