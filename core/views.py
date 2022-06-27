@@ -7,7 +7,7 @@ from .models import Planejamento, Execucao
 
 def index(request):
     context = {
-        'planejamento': Planejamento.objects.all()
+        'planejamentos': Planejamento.objects.all()
     }
     return render(request, 'index.html', context)
     
@@ -55,5 +55,7 @@ def detalhes_planejamento(request, planejamento_id):
     return render(request, 'detalhes_planejamento.html', context)
 
 def planejamentos_executados(request):
-    context = {}
+    context = {
+        'execucao' : Execucao.objects.all()
+        }
     return render(request, 'planejamentos_executados.html', context)
