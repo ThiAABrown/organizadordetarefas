@@ -68,9 +68,13 @@
         </ul>
       </div>
 
-      <div class="b-example-divider"></div>
-
-      {% block conteudo %} {% endblock conteudo %}
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            {% block conteudo %} {% endblock conteudo %}
+          </div>
+        </div>
+      </div>
 
     </main>
 
