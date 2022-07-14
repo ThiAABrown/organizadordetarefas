@@ -7,6 +7,6 @@ urlpatterns = [
     path('planejamento/', criar_planejamento, name='criar_planejamento'),
     path('executar/<int:planejamento_id>/', executar_planejamento, name='executar_planejamento'),
     path('executados/', planejamentos_executados, name='planejamentos_executados'),
-    path('estatisticas/', estatisticas_planejamento, name='estatisticas_planejamento'),
+    path('estatisticas/<int:planejamento_id>/<int:execucao_id>/', estatisticas_planejamento, name='estatisticas_planejamento'),
     path('detalhes/<int:planejamento_id>/', detalhes_planejamento, name='detalhes_planejamento')
 ]
