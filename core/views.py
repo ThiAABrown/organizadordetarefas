@@ -52,26 +52,23 @@ def estatisticas_planejamento(request, planejamento_id, execucao_id):
     planejamento = Planejamento.objects.get(id=planejamento_id)
     execucao = Execucao.objects.get(id=execucao_id)
 
-    planejamento_inicio = planejamento.inicio
-    planejamento_termino = planejamento.termino
+    delta_planejamento = planejamento.termino - planejamento.inicio
+    delta_planejamento_convertido = converter(delta_planejamento.total_seconds())
+    delta_planejamento_humano = converter_humano(delta_planejamento_convertido)
 
-    execucao_inicio = execucao.inicio
-    execucao_termino = execucao.termino
+    delta_execucao = execucao.termino - execucao.inicio
+    delta_execucao_convertido = converter(delta_execucao.total_seconds())
+    delta_execucao_humano = converter_humano(delta_execucao_convertido)
 
-    delta_inicio = execucao_inicio - planejamento_inicio
-    delta_inicio_convertido = converter(delta_inicio.total_seconds())
-    delta_inicio_humano = converter_humano(delta_inicio_convertido)
-
-    delta_termino = execucao_termino - planejamento_termino
-    delta_termino_convertido = converter(delta_termino.total_seconds())
-    delta_termino_humano = converter_humano(delta_termino_convertido)
-    
     # import ipdb; ipdb.set_trace()
 
-    mensagem_inicio = f'O planejamento deveria iniciar as {planejamento_inicio}, porem foi iniciado as {execucao_inicio}.'
-    mensagem_termino = f'O planejamento deveria terminar as {planejamento_termino}, porem foi finalizado as {execucao_termino}.'
-    mensagem_tempo_total = 'Você planejou trabalhar/estudar 2:00, porem trabalhou/estudou 1:00.'
-    mensagem_resultado = 'Você falhou no seu planejamento e deve organizar melhor o seu tempo.'
+    resultado = delta_planejamento - delta_execucao
+    resultado_convertido = converter(resultado.total_seconds())
+
+    mensagem_inicio = f'O planejamento deveria iniciar as {planejamento.inicio}, porem foi iniciado as {execucao.inicio}.'
+    mensagem_termino = f'O planejamento deveria terminar as {planejamento.termino}, porem foi finalizado as {execucao.termino}.'
+    mensagem_tempo_total = f'Você planejou trabalhar/estudar {delta_planejamento_convertido}, porem trabalhou/estudou {delta_execucao_convertido}.' 
+    mensagem_resultado = f'Você falhou no seu planejamento e deve organizar melhor o seu tempo. O tempo de estudo foi de {resultado_convertido}.'
 
     context = { 'mensagem_inicio': mensagem_inicio, 
     'mensagem_termino': mensagem_termino, 
