@@ -1,13 +1,14 @@
 from cmath import e
 from email import message_from_binary_file
 from multiprocessing import context
+from termios import TIOCPKT_DOSTOP
 from django.shortcuts import render
 from django.contrib import messages
 from datetime import datetime
 
 from .forms import PlanejamentoForm, ExecucaoForm
 from .models import Planejamento, Execucao
-from .funcoes import converter, converter_humano 
+from .funcoes import calcular_estatisticas
 
 def index(request):
     context = {
@@ -51,19 +52,11 @@ def estatisticas_planejamento(request, planejamento_id, execucao_id):
 
     planejamento = Planejamento.objects.get(id=planejamento_id)
     execucao = Execucao.objects.get(id=execucao_id)
-
-    delta_planejamento = planejamento.termino - planejamento.inicio
-    delta_planejamento_convertido = converter(delta_planejamento.total_seconds())
-    delta_planejamento_humano = converter_humano(delta_planejamento_convertido)
-
-    delta_execucao = execucao.termino - execucao.inicio
-    delta_execucao_convertido = converter(delta_execucao.total_seconds())
-    delta_execucao_humano = converter_humano(delta_execucao_convertido)
+    # TODO: Criar um teste para a funcao calcular_estatisticas usando o ex: http://127.0.0.1:8000/estatisticas/12/6/
+    delta_planejamento_convertido, delta_execucao_convertido, resultado_convertido = calcular_estatisticas(planejamento.inicio, planejamento.termino, execucao.inicio, execucao.termino)
 
     # import ipdb; ipdb.set_trace()
 
-    resultado = delta_planejamento - delta_execucao
-    resultado_convertido = converter(resultado.total_seconds())
 
     mensagem_inicio = f'O planejamento deveria iniciar as {planejamento.inicio}, porem foi iniciado as {execucao.inicio}.'
     mensagem_termino = f'O planejamento deveria terminar as {planejamento.termino}, porem foi finalizado as {execucao.termino}.'
