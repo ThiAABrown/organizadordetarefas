@@ -52,7 +52,6 @@ def estatisticas_planejamento(request, planejamento_id, execucao_id):
 
     planejamento = Planejamento.objects.get(id=planejamento_id)
     execucao = Execucao.objects.get(id=execucao_id)
-    # TODO: Criar um teste para a funcao calcular_estatisticas usando o ex: http://127.0.0.1:8000/estatisticas/12/6/
     delta_planejamento_convertido, delta_execucao_convertido, resultado_convertido = calcular_estatisticas(planejamento.inicio, planejamento.termino, execucao.inicio, execucao.termino)
 
     # import ipdb; ipdb.set_trace()
