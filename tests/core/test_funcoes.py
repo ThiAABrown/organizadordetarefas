@@ -6,15 +6,19 @@ def test_calcular_estatisticas():
 
 def test_converter_humano_ex1():
     converterhumanoex1 = converter_humano('00:00:15')
-    assert converterhumanoex1 == '00 horas, 00 minutos e 15 segundos '
+    assert converterhumanoex1 == '00 minutos e 15 segundos '
 
 def test_converter_humano_ex2():
     converterhumanoex2 = converter_humano('00:11:40')
-    assert converterhumanoex2 == '00 horas, 11 minutos e 40 segundos '
+    assert converterhumanoex2 == '11 minutos e 40 segundos '
 
 def test_converter_humano_ex3():
-    converterhumanoex3 = converter_humano('01:15:59')
-    assert converterhumanoex3 == '01 horas, 15 minutos e 59 segundos '
+    converterhumanoex3 = converter_humano('01:00:59')
+    assert converterhumanoex3 == '01 horas e 59 segundos '
+
+def test_converter_humano_ex4():
+    converterhumanoex4 = converter_humano('01:15:59')
+    assert converterhumanoex4 == '01 horas, 15 minutos e 59 segundos '
 
 def test_converter_ex1():
     converterex1 = converter(15)
