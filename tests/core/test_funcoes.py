@@ -4,6 +4,10 @@ def test_calcular_estatisticas():
     # TODO: Criar um teste para a funcao calcular_estatisticas usando o ex: http://127.0.0.1:8000/estatisticas/12/6/
     assert 1==1
 
-def test_converter():
-    # TODO: Criar um teste para a funcao converter
-    assert 2==2
+def test_converter_ex1():
+    converterex1 = converter(15)
+    assert converterex1=='00:00:15'
+
+def test_converter_ex2():
+    converterex2 = converter(700)
+    assert converterex2=='00:11:40'
