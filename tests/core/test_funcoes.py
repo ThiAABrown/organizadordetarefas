@@ -12,6 +12,10 @@ def test_converter_humano_ex2():
     converterhumanoex2 = converter_humano('00:11:40')
     assert converterhumanoex2 == '00 horas, 11 minutos e 40 segundos '
 
+def test_converter_humano_ex3():
+    converterhumanoex3 = converter_humano('01:15:59')
+    assert converterhumanoex3 == '01 horas, 15 minutos e 59 segundos '
+
 def test_converter_ex1():
     converterex1 = converter(15)
     assert converterex1=='00:00:15'
