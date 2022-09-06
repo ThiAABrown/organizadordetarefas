@@ -6,14 +6,29 @@ def converter(seconds):
 
 def converter_humano(tempo):
     horas, minutos, segundos = tempo.split(':')
+
     if int(horas) < 1:
-        return minutos + ' minutos e ' + segundos + ' segundos '
-
-    elif int(horas) >= 1 and int(minutos) < 1:
-        return horas + ' horas e ' + segundos + ' segundos '
-
+        horas = ''
+    elif int(horas) == 1:
+        horas = horas + ' hora' + ', '
     else:
-        return horas + ' horas, ' + minutos + ' minutos e ' + segundos + ' segundos '
+        horas = horas + ' horas' + ', '
+
+    if int(minutos) < 1:
+        minutos = ''
+    elif int(minutos) == 1:
+        minutos = minutos + ' minuto' + ', '
+    else:
+        minutos = minutos + ' minutos' + ', '
+
+    if int(segundos) < 1:
+        segundos = ''
+    elif int(segundos) == 1:
+        segundos = segundos + ' segundo '
+    else:
+        segundos = segundos + ' segundos '
+
+    return horas + minutos + segundos  
 
 def calcular_estatisticas(planejamento_inicio, planejamento_termino, execucao_inicio, execucao_termino):
     
