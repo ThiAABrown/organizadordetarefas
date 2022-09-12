@@ -40,9 +40,8 @@ def calcular_estatisticas(planejamento_inicio, planejamento_termino, execucao_in
     delta_execucao_convertido = converter(delta_execucao.total_seconds())
     delta_execucao_humano = converter_humano(delta_execucao_convertido)
 
-    # import ipdb; ipdb.set_trace()
 
     resultado = delta_planejamento - delta_execucao
     resultado_convertido = converter(resultado.total_seconds())
-
-    return delta_planejamento_convertido, delta_execucao_convertido, resultado_convertido
+    #import ipdb; ipdb.set_trace()
+    return delta_planejamento_convertido, delta_execucao_convertido, resultado_convertido 
